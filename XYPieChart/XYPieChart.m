@@ -254,6 +254,12 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 
 #pragma mark - Pie Reload Data With Animation
 
+- (void)clearDataImmediately {
+    NSArray *pieLayers = [_pieView.layer.sublayers copy];
+    for (SliceLayer *sliceLayer in pieLayers)
+        [sliceLayer removeFromSuperlayer];
+}
+
 - (void)reloadData
 {
     if (_dataSource)
